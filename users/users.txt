@@ -1,0 +1,2 @@
+jan_kowalski,haslo1
+anna_nowak,haslo2
