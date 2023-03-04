@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AnonyBest Beta - Dashboard</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h1>Dashboard</h1>
+	<p>Welcome, <?php echo $_SESSION["username"]; ?></p>
+	<a href="logout.php">Logout</a>
+	
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				if (xhr.status === 200) {
+					if (xhr.responseText === "success") {
+						// User is logged in, do nothing
+					} else {
+						window.location.href = "login.html"; // Redirect to login page
+					}
+				} else {
+					alert("There was a problem with the request."); // Show error message
+				}
+			}
+		};
+		xhr.open("GET", "check_login.php", true);
+		xhr.send();
+	</script>
+</body>
+</html>

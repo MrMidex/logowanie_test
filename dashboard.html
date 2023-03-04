@@ -1,0 +1,25 @@
+<?php
+// rozpoczynamy sesję
+session_start();
+
+// sprawdzamy, czy użytkownik jest zalogowany
+if (!isset($_SESSION['username'])) {
+    // jeśli użytkownik nie jest zalogowany, przekierowujemy go na stronę logowania
+    header("Location: index.php");
+    exit();
+}
+
+// pobieramy nazwę użytkownika z sesji
+$username = $_SESSION['username'];
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+</head>
+<body>
+	<h1>Witaj, <?php echo $username; ?>!</h1>
+	<p>To jest Twoja prywatna strona.</p>
+</body>
+</html>
